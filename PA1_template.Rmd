@@ -10,6 +10,7 @@ output:
 ```{r}
 activity <- read.csv("activity.csv", colClasses = c("numeric", "Date", "numeric"))
 ```
+
 2 – No preprocessing required because we used colClasses
 
 ## What is mean total number of steps taken per day?
@@ -18,10 +19,12 @@ activity <- read.csv("activity.csv", colClasses = c("numeric", "Date", "numeric"
 stepsPerDay <- aggregate(activity$steps, by = list(activity$date), FUN = sum, na.rm = TRUE)
 colnames(stepsPerDay) <- c("date", "sum")
 ```
+
 2 – Make a histogram of the total number of steps taken each day
 ```{r, fig.width = 10, fig.height = 5}
 hist(stepsPerDay$sum, main = "Histogram of Sum of steps / day", xlab = "Sum of steps / day")
 ```
+
 3 – Calculate and report the mean and median of the total number of steps taken per day
 ```{r}
 mean(stepsPerDay$sum, na.rm = TRUE)
@@ -40,7 +43,6 @@ plot(stepsPerInterval, type = "l", main = "Average Number of Steps Taken Across 
 ```{r}
 stepsPerInterval[stepsPerInterval$mean == max(stepsPerInterval$mean),]$interval
 ```
-
 
 ## Inputing missing values
 1 – Calculate and report the total number of missing values in the dataset
